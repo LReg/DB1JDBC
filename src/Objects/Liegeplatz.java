@@ -36,4 +36,14 @@ public class Liegeplatz {
     public void setFuerKathegorie(Wasserfahrzeugkathegorie fuerKathegorie) {
         this.fuerKathegorie = fuerKathegorie;
     }
+
+    @Override
+    public String toString() {
+        return "Liegeplatz{" +
+                "id=" + id +
+                ", hafen=" + hafen +
+                ", wasserfahrzeug=" + wasserfahrzeug +
+                ", fuerKathegorie=" + fuerKathegorie +
+                '}';
+    }
 }

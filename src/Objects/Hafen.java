@@ -51,4 +51,13 @@ public class Hafen {
         this.status = status;
     }
 
+    @Override
+    public String toString() {
+        return "Hafen{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", anzahlLiegeplaetze=" + anzahlLiegeplaetze +
+                ", status=" + status +
+                '}';
+    }
 }

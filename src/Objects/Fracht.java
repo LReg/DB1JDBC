@@ -35,4 +35,13 @@ public class Fracht {
     public void setGewicht(int gewicht) {
         this.gewicht = gewicht;
     }
+
+    @Override
+    public String toString() {
+        return "Fracht{" +
+                "id=" + id +
+                ", bezeichnug='" + bezeichnug + '\'' +
+                ", gewicht=" + gewicht +
+                '}';
+    }
 }

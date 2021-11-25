@@ -45,4 +45,14 @@ public class Route {
     public void setLaeenge(int laeenge) {
         this.laeenge = laeenge;
     }
+
+    @Override
+    public String toString() {
+        return "Route{" +
+                "id=" + id +
+                ", start=" + start +
+                ", ziel=" + ziel +
+                ", laeenge=" + laeenge +
+                '}';
+    }
 }

@@ -55,4 +55,15 @@ public class Wasserfahrzeug {
     public void setRoute(Route route) {
         this.route = route;
     }
+
+    @Override
+    public String toString() {
+        return "Wasserfahrzeug{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", liegeplatz=" + liegeplatz +
+                ", fracht=" + fracht +
+                ", route=" + route +
+                '}';
+    }
 }

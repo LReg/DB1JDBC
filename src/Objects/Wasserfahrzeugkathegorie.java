@@ -35,4 +35,13 @@ public class Wasserfahrzeugkathegorie {
     public void setTitle(String title) {
         this.title = title;
     }
+
+    @Override
+    public String toString() {
+        return "Wasserfahrzeugkathegorie{" +
+                "id=" + id +
+                ", oberkathegorie=" + oberkathegorie +
+                ", title='" + title + '\'' +
+                '}';
+    }
 }
