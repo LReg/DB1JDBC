@@ -1,4 +1,5 @@
-.src/Privatinformationen.java
+src/PrivateInformation.java
+.src/PrivateInformation.java
 .idea
 # Compiled class file
 *.class
