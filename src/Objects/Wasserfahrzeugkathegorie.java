@@ -3,12 +3,12 @@ package Objects;
 public class Wasserfahrzeugkathegorie {
 
     private int id;
-    private Wasserfahrzeugkathegorie oberkathegorie;
+    private int oberkathegorieId;
     private String title;
 
-    public Wasserfahrzeugkathegorie(int id, Wasserfahrzeugkathegorie oberkathegorie, String title) {
+    public Wasserfahrzeugkathegorie(int id, int oberkathegorieId, String title) {
         this.id = id;
-        this.oberkathegorie = oberkathegorie;
+        this.oberkathegorieId = oberkathegorieId;
         this.title = title;
     }
 
@@ -20,12 +20,12 @@ public class Wasserfahrzeugkathegorie {
         this.id = id;
     }
 
-    public Wasserfahrzeugkathegorie getOberkathegorie() {
-        return oberkathegorie;
+    public int getOberkathegorieId() {
+        return oberkathegorieId;
     }
 
-    public void setOberkathegorie(Wasserfahrzeugkathegorie oberkathegorie) {
-        this.oberkathegorie = oberkathegorie;
+    public void setOberkathegorieId(int oberkathegorieId) {
+        this.oberkathegorieId = oberkathegorieId;
     }
 
     public String getTitle() {
@@ -40,7 +40,7 @@ public class Wasserfahrzeugkathegorie {
     public String toString() {
         return "Wasserfahrzeugkathegorie{" +
                 "id=" + id +
-                ", oberkathegorie=" + oberkathegorie +
+                ", oberkathegorieId=" + oberkathegorieId +
                 ", title='" + title + '\'' +
                 '}';
     }

@@ -3,14 +3,14 @@ package Objects;
 public class Route {
 
     private int id;
-    private Liegeplatz start;
-    private Liegeplatz ziel;
+    private int startLiegeplatzId;
+    private int zielLiegeplatzId;
     private int laeenge;
 
-    public Route(int id, Liegeplatz start, Liegeplatz ziel, int laeenge) {
+    public Route(int id, int startLiegeplatzId, int zielLiegeplatzId, int laeenge) {
         this.id = id;
-        this.start = start;
-        this.ziel = ziel;
+        this.startLiegeplatzId = startLiegeplatzId;
+        this.zielLiegeplatzId = zielLiegeplatzId;
         this.laeenge = laeenge;
     }
 
@@ -22,20 +22,20 @@ public class Route {
         this.id = id;
     }
 
-    public Liegeplatz getStart() {
-        return start;
+    public int getStartLiegeplatzId() {
+        return startLiegeplatzId;
     }
 
-    public void setStart(Liegeplatz start) {
-        this.start = start;
+    public void setStartLiegeplatzId(int startLiegeplatzId) {
+        this.startLiegeplatzId = startLiegeplatzId;
     }
 
-    public Liegeplatz getZiel() {
-        return ziel;
+    public int getZielLiegeplatzId() {
+        return zielLiegeplatzId;
     }
 
-    public void setZiel(Liegeplatz ziel) {
-        this.ziel = ziel;
+    public void setZielLiegeplatzId(int zielLiegeplatzId) {
+        this.zielLiegeplatzId = zielLiegeplatzId;
     }
 
     public int getLaeenge() {
@@ -50,8 +50,8 @@ public class Route {
     public String toString() {
         return "Route{" +
                 "id=" + id +
-                ", start=" + start +
-                ", ziel=" + ziel +
+                ", startLiegeplatzId=" + startLiegeplatzId +
+                ", zielLiegeplatzId=" + zielLiegeplatzId +
                 ", laeenge=" + laeenge +
                 '}';
     }

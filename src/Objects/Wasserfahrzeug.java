@@ -4,16 +4,16 @@ public class Wasserfahrzeug {
 
     private int id;
     private String name;
-    private Liegeplatz liegeplatz;
-    private Fracht fracht;
-    private Route route;
+    private int liegeplatzId;
+    private int frachtId;
+    private int routeId;
 
-    public Wasserfahrzeug(int id, String name, Liegeplatz liegeplatz, Fracht fracht, Route route) {
+    public Wasserfahrzeug(int id, String name, int liegeplatzId, int frachtId, int routeId) {
         this.id = id;
         this.name = name;
-        this.liegeplatz = liegeplatz;
-        this.fracht = fracht;
-        this.route = route;
+        this.liegeplatzId = liegeplatzId;
+        this.frachtId = frachtId;
+        this.routeId = routeId;
     }
 
     public int getId() {
@@ -32,28 +32,28 @@ public class Wasserfahrzeug {
         this.name = name;
     }
 
-    public Liegeplatz getLiegeplatz() {
-        return liegeplatz;
+    public int getLiegeplatzId() {
+        return liegeplatzId;
     }
 
-    public void setLiegeplatz(Liegeplatz liegeplatz) {
-        this.liegeplatz = liegeplatz;
+    public void setLiegeplatzId(int liegeplatzId) {
+        this.liegeplatzId = liegeplatzId;
     }
 
-    public Fracht getFracht() {
-        return fracht;
+    public int getFrachtId() {
+        return frachtId;
     }
 
-    public void setFracht(Fracht fracht) {
-        this.fracht = fracht;
+    public void setFrachtId(int frachtId) {
+        this.frachtId = frachtId;
     }
 
-    public Route getRoute() {
-        return route;
+    public int getRouteId() {
+        return routeId;
     }
 
-    public void setRoute(Route route) {
-        this.route = route;
+    public void setRouteId(int routeId) {
+        this.routeId = routeId;
     }
 
     @Override
@@ -61,9 +61,9 @@ public class Wasserfahrzeug {
         return "Wasserfahrzeug{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", liegeplatz=" + liegeplatz +
-                ", fracht=" + fracht +
-                ", route=" + route +
+                ", liegeplatzId=" + liegeplatzId +
+                ", frachtId=" + frachtId +
+                ", routeId=" + routeId +
                 '}';
     }
 }

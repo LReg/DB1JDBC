@@ -15,7 +15,7 @@ public class Hafen {
                         resultSet.getInt(1),
                         resultSet.getString(2).trim(),
                         resultSet.getInt(3),
-                        resultSet.getBoolean(4)
+                        resultSet.getInt(4)
                 );
                 list.add(hafen);
             }
@@ -31,7 +31,7 @@ public class Hafen {
             preparedStatement.setInt(1, hafen.getId());
             preparedStatement.setString(2, hafen.getName());
             preparedStatement.setInt(3, hafen.getAnzahlLiegeplaetze());
-            preparedStatement.setBoolean(4, hafen.getStatus());
+            preparedStatement.setInt(4, hafen.getStatus());
         }
         catch (SQLException e){
             e.printStackTrace();
@@ -43,7 +43,7 @@ public class Hafen {
         try{
             preparedStatement.setString(1, hafen.getName());
             preparedStatement.setInt(2, hafen.getAnzahlLiegeplaetze());
-            preparedStatement.setBoolean(3, hafen.getStatus());
+            preparedStatement.setInt(3, hafen.getStatus());
         }
         catch (SQLException e){
             e.printStackTrace();
@@ -51,12 +51,15 @@ public class Hafen {
         return preparedStatement;
     }
 
+    public static final int FREI = 1;
+    public static final int BELEGT = 0;
+
     private int id;
     private String name;
     private int anzahlLiegeplaetze;
-    private Boolean status;
+    private int status;
 
-    public Hafen(int id, String name, int anzahlLiegeplaetze, Boolean status) {
+    public Hafen(int id, String name, int anzahlLiegeplaetze, int status) {
         this.id = id;
         this.name = name;
         this.anzahlLiegeplaetze = anzahlLiegeplaetze;
@@ -87,11 +90,11 @@ public class Hafen {
         this.anzahlLiegeplaetze = anzahlLiegeplaetze;
     }
 
-    public Boolean getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(Boolean status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 

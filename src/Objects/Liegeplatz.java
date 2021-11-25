@@ -4,13 +4,14 @@ public class Liegeplatz {
 
     private int id;
     private Hafen hafen;
-    private Wasserfahrzeug wasserfahrzeug;
-    private Wasserfahrzeugkathegorie fuerKathegorie;
+    private int wasserfahrzeugId;
+    private int fuerKathegorieId;
 
-    public Liegeplatz(int id, Hafen hafen, Wasserfahrzeugkathegorie fuerKathegorie) {
+    public Liegeplatz(int id, Hafen hafen, int wasserfahrzeugId, int fuerKathegorieId) {
         this.id = id;
         this.hafen = hafen;
-        this.fuerKathegorie = fuerKathegorie;
+        this.wasserfahrzeugId = wasserfahrzeugId;
+        this.fuerKathegorieId = fuerKathegorieId;
     }
 
     public int getId() {
@@ -29,12 +30,20 @@ public class Liegeplatz {
         this.hafen = hafen;
     }
 
-    public Wasserfahrzeugkathegorie getFuerKathegorie() {
-        return fuerKathegorie;
+    public int getWasserfahrzeugId() {
+        return wasserfahrzeugId;
     }
 
-    public void setFuerKathegorie(Wasserfahrzeugkathegorie fuerKathegorie) {
-        this.fuerKathegorie = fuerKathegorie;
+    public void setWasserfahrzeugId(int wasserfahrzeugId) {
+        this.wasserfahrzeugId = wasserfahrzeugId;
+    }
+
+    public int getFuerKathegorieId() {
+        return fuerKathegorieId;
+    }
+
+    public void setFuerKathegorieId(int fuerKathegorieId) {
+        this.fuerKathegorieId = fuerKathegorieId;
     }
 
     @Override
@@ -42,8 +51,8 @@ public class Liegeplatz {
         return "Liegeplatz{" +
                 "id=" + id +
                 ", hafen=" + hafen +
-                ", wasserfahrzeug=" + wasserfahrzeug +
-                ", fuerKathegorie=" + fuerKathegorie +
+                ", wasserfahrzeugId=" + wasserfahrzeugId +
+                ", fuerKathegorieId=" + fuerKathegorieId +
                 '}';
     }
 }

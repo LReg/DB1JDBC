@@ -1,6 +1,53 @@
 package Objects;
 
+import java.sql.Array;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 public class Fracht {
+
+    public static ArrayList<Fracht> fromResultSet(ResultSet resultSet){
+        ArrayList<Fracht> list = new ArrayList<>();
+        try{
+            while(resultSet.next()){
+                Fracht fracht = new Fracht(
+                        resultSet.getInt(1),
+                        resultSet.getString(2),
+                        resultSet.getInt(3)
+                );
+                list.add(fracht);
+            }
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public static PreparedStatement fillPreparedStatementForAdd(PreparedStatement preparedStatement, Fracht fracht){
+        try{
+            preparedStatement.setInt(1, fracht.getId());
+            preparedStatement.setString(2, fracht.getBezeichnug());
+            preparedStatement.setInt(3, fracht.getGewicht());
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return preparedStatement;
+    }
+
+    public static PreparedStatement fillPreparedStatementForChange(PreparedStatement preparedStatement, Fracht fracht){
+        try{
+            preparedStatement.setString(1, fracht.getBezeichnug());
+            preparedStatement.setInt(2, fracht.getGewicht());
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return preparedStatement;
+    }
 
     private int id;
     private String bezeichnug;

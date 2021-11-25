@@ -1,3 +1,4 @@
+import Objects.Fracht;
 import Objects.Hafen;
 
 import java.sql.*;
@@ -65,6 +66,29 @@ public class DatabaseService {
 
     public void deleteHafen(Hafen hafen){
         String sqlString = "delete from hafen where id=" + hafen.getId();
+        databaseInteraction(getPreparedStatement(sqlString));
+    }
+
+    public void listAllFracht(){
+        String sqlString = "select";//TODO Benennung mit Tim
+        ResultSet resultSet = databaseInteraction(getPreparedStatement(sqlString));
+        Fracht.fromResultSet(resultSet).forEach(fracht -> {
+            System.out.println(fracht.toString());
+        });
+    }
+
+    public void addFracht(Fracht fracht){
+        String sqlString = "insert into fracht values (?, ?, ?)";
+        PreparedStatement preparedStatement = getPreparedStatement(sqlString);
+        preparedStatement = Fracht.fillPreparedStatementForAdd(preparedStatement, fracht);
+        databaseInteraction(preparedStatement);
+    }
+
+    public void changeFracht(Fracht fracht){
+        String sqlString = "update fracht set bezeichnung=?, gewicht=? where id=" + fracht.getId();
+        PreparedStatement preparedStatement = getPreparedStatement(sqlString);
+        preparedStatement = Fracht.fillPreparedStatementForChange(preparedStatement, fracht);
+        databaseInteraction(preparedStatement);
     }
 
 }
