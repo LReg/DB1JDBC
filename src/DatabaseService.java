@@ -1,7 +1,4 @@
-import Objects.Fracht;
-import Objects.Hafen;
-import Objects.Wasserfahrzeug;
-import Objects.Wasserfahrzeugkathegorie;
+import Objects.*;
 
 import java.sql.*;
 
@@ -165,6 +162,34 @@ public class DatabaseService {
 
     public void deleteWasserfahrzeug(Wasserfahrzeug wasserfahrzeug){
         String sqlString = "delete from wasserfahrzeug where id=" + wasserfahrzeug.getId();
+        databaseInteraction(getPreparedStatement(sqlString));
+    }
+
+    public void listAllLiegeplaetze(){
+        String sqlString = "select...";//TODO Tim bennnung
+        ResultSet resultSet = databaseInteraction(getPreparedStatement(sqlString));
+        Liegeplatz.fromResultSet(resultSet).forEach(kat -> {
+            System.out.println(kat.toString());
+        });
+
+    }
+
+    public void addLiegeplatz(Liegeplatz liegeplatz){
+        String sqlString = "insert into liegeplatz values (?, ?, ?, ?)";
+        PreparedStatement preparedStatement = getPreparedStatement(sqlString);
+        preparedStatement = Liegeplatz.fillPreparedStatementForAdd(preparedStatement, liegeplatz);
+        databaseInteraction(preparedStatement);
+    }
+
+    public void changeLiegeplatz(Liegeplatz liegeplatz){
+        String sqlString = "update liegeplatz set hafenId=?, wasserfahrzeugId=?, fuerKategrieId=? where id=" + liegeplatz.getId();
+        PreparedStatement preparedStatement = getPreparedStatement(sqlString);
+        preparedStatement = Liegeplatz.fillPreparedStatementForChange(preparedStatement, liegeplatz);
+        databaseInteraction(preparedStatement);
+    }
+
+    public void deleteLiegeplatz(Liegeplatz liegeplatz){
+        String sqlString = "delete from liegeplatz where id=" + liegeplatz.getId();
         databaseInteraction(getPreparedStatement(sqlString));
     }
 
