@@ -8,12 +8,7 @@ public class DatabaseService {
 
     public DatabaseService(){
         connect();
-        addWasserfahrzeug(new Wasserfahrzeug(10, "MS Schiff",2 ,8, 10, 5));
-        listAllFracht();
-        listAllKategorien();
-        listAllWasserfahrzeuge();
-        listAllRouten();
-        listAllLiegeplaetze();
+        printHowManyLowerKategrien(new Wasserfahrzeugkategorie(5, 2, "Motorboote"));
     }
 
     /**
@@ -124,7 +119,7 @@ public class DatabaseService {
      * @param fracht
      */
     public void changeFracht(Fracht fracht){
-        String sqlString = "update fracht set bezeichnung=?, gewicht=? where id=" + fracht.getId();
+        String sqlString = "update fracht set bezeichnung=?, gewicht=? where fracht_id=" + fracht.getId();
         PreparedStatement preparedStatement = getPreparedStatement(sqlString);
         preparedStatement = Fracht.fillPreparedStatementForChange(preparedStatement, fracht);
         databaseInteraction(preparedStatement);
@@ -135,7 +130,7 @@ public class DatabaseService {
      * @param fracht
      */
     public void deleteFracht(Fracht fracht){
-        String sqlString = "delte from fracht where id=" + fracht.getId();
+        String sqlString = "delete from fracht where fracht_id=" + fracht.getId();
         PreparedStatement preparedStatement = getPreparedStatement(sqlString);
         databaseInteraction(preparedStatement);
     }
@@ -227,7 +222,7 @@ public class DatabaseService {
      * @param wasserfahrzeug
      */
     public void changeWasserfahrzeug(Wasserfahrzeug wasserfahrzeug){
-        String sqlString = "update wasserfahrzeug set name=?, kategorieId=?, liegeplatzId=?, frachtId=?, routeId=? where id=" + wasserfahrzeug.getId();
+        String sqlString = "update wasserfahrzeuge set name=?, kategorie=?, liegeplatz=?, fracht=?, route=? where schiff_id=" + wasserfahrzeug.getId();
         PreparedStatement preparedStatement = getPreparedStatement(sqlString);
         preparedStatement = Wasserfahrzeug.fillPreparedStatementForChange(preparedStatement, wasserfahrzeug);
         databaseInteraction(preparedStatement);
@@ -238,7 +233,7 @@ public class DatabaseService {
      * @param wasserfahrzeug
      */
     public void deleteWasserfahrzeug(Wasserfahrzeug wasserfahrzeug){
-        String sqlString = "delete from wasserfahrzeug where id=" + wasserfahrzeug.getId();
+        String sqlString = "delete from wasserfahrzeuge where schiff_id=" + wasserfahrzeug.getId();
         databaseInteraction(getPreparedStatement(sqlString));
     }
 
@@ -270,7 +265,7 @@ public class DatabaseService {
      * @param liegeplatz
      */
     public void changeLiegeplatz(Liegeplatz liegeplatz){
-        String sqlString = "update liegeplatz set hafenId=?, wasserfahrzeugId=?, fuerKategrieId=? where id=" + liegeplatz.getId();
+        String sqlString = "update liegeplätze set hafen=?, passende_kategorie=? where lageplatz_id=" + liegeplatz.getId();
         PreparedStatement preparedStatement = getPreparedStatement(sqlString);
         preparedStatement = Liegeplatz.fillPreparedStatementForChange(preparedStatement, liegeplatz);
         databaseInteraction(preparedStatement);
@@ -281,7 +276,7 @@ public class DatabaseService {
      * @param liegeplatz
      */
     public void deleteLiegeplatz(Liegeplatz liegeplatz){
-        String sqlString = "delete from liegeplatz where id=" + liegeplatz.getId();
+        String sqlString = "delete from liegeplätze where lageplatz_id=" + liegeplatz.getId();
         databaseInteraction(getPreparedStatement(sqlString));
     }
 
@@ -313,7 +308,7 @@ public class DatabaseService {
      * @param route
      */
     public void changeRoute(Route route){
-        String sqlString = "update route set startLiegeplatzId=?, zielLiegeplatzId=?, laenge=? where id=" + route.getId();
+        String sqlString = "update route set startplatz=?, zielplatz=?, länge=? where routen_id=" + route.getId();
         PreparedStatement preparedStatement = getPreparedStatement(sqlString);
         preparedStatement = Route.fillPreparedStatementForChange(preparedStatement, route);
         databaseInteraction(preparedStatement);
@@ -324,7 +319,7 @@ public class DatabaseService {
      * @param route
      */
     public void deleteRoute(Route route){
-        String sqlString = "delete from route where id=" + route.getId();
+        String sqlString = "delete from route where routen_id=" + route.getId();
         databaseInteraction(getPreparedStatement(sqlString));
     }
 
