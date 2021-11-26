@@ -8,7 +8,7 @@ public class DatabaseService {
 
     public DatabaseService(){
         connect();
-        addWasserfahrzeug(new Wasserfahrzeug(10, "MS Schiff", 8, 10, 5));
+        addWasserfahrzeug(new Wasserfahrzeug(10, "MS Schiff",2 ,8, 10, 5));
         listAllFracht();
         listAllKategorien();
         listAllWasserfahrzeuge();
@@ -48,7 +48,7 @@ public class DatabaseService {
     }
 
     public void listAllHafen(){
-        String sqlString = "SELECT * FROM Hafen";//TODO Mit Tim benennung absprechen
+        String sqlString = "SELECT * FROM Hafen";
         ResultSet resultSet = databaseInteraction(getPreparedStatement(sqlString));
         Hafen.fromResultSet(resultSet).forEach(hafen -> {
             System.out.println(hafen.toString());
@@ -63,7 +63,7 @@ public class DatabaseService {
     }
 
     public void changeHafen(Hafen hafen){
-        String sqlString = "update Hafen set Name=?, Anzahl_Lageplätze=?, Platz_verfügbar=? where Hafen_ID=" + hafen.getId();//TODO auch benennung beachten
+        String sqlString = "update Hafen set Name=?, Anzahl_Lageplätze=?, Platz_verfügbar=? where Hafen_ID=" + hafen.getId();
         PreparedStatement preparedStatement = getPreparedStatement(sqlString);
         preparedStatement = Hafen.fillPreparedStatementForChange(preparedStatement, hafen);
         databaseInteraction(preparedStatement);
@@ -75,7 +75,7 @@ public class DatabaseService {
     }
 
     public void listAllFracht(){
-        String sqlString = "select * from Fracht";//TODO Benennung mit Tim
+        String sqlString = "select * from Fracht";
         ResultSet resultSet = databaseInteraction(getPreparedStatement(sqlString));
         Fracht.fromResultSet(resultSet).forEach(fracht -> {
             System.out.println(fracht.toString());
@@ -103,7 +103,7 @@ public class DatabaseService {
     }
 
     public void listAllKategorien(){
-        String sqlString = "select * from Wasserfahrzeugkategorie";//TODO Tim bennnung
+        String sqlString = "select * from Wasserfahrzeugkategorie";
         ResultSet resultSet = databaseInteraction(getPreparedStatement(sqlString));
         Wasserfahrzeugkathegorie.fromResultSet(resultSet).forEach(kat -> {
             System.out.println(kat.toString());
@@ -144,7 +144,7 @@ public class DatabaseService {
     }
 
     public void listAllWasserfahrzeuge(){
-        String sqlString = "select * from Wasserfahrzeuge";//TODO Tim bennnung
+        String sqlString = "select * from Wasserfahrzeuge";
         ResultSet resultSet = databaseInteraction(getPreparedStatement(sqlString));
         Wasserfahrzeug.fromResultSet(resultSet).forEach(kat -> {
             System.out.println(kat.toString());
@@ -153,14 +153,14 @@ public class DatabaseService {
     }
 
     public void addWasserfahrzeug(Wasserfahrzeug wasserfahrzeug){
-        String sqlString = "insert into wasserfahrzeuge values (?, ?, ?, ?, ?)";
+        String sqlString = "insert into wasserfahrzeuge values (?, ?, ?, ?, ?, ?)";
         PreparedStatement preparedStatement = getPreparedStatement(sqlString);
         preparedStatement = Wasserfahrzeug.fillPreparedStatementForAdd(preparedStatement, wasserfahrzeug);
         databaseInteraction(preparedStatement);
     }
 
     public void changeWasserfahrzeug(Wasserfahrzeug wasserfahrzeug){
-        String sqlString = "update wasserfahrzeug set name=?, liegeplatzId=?, frachtId=?, routeId=? where id=" + wasserfahrzeug.getId();
+        String sqlString = "update wasserfahrzeug set name=?, kategorieId=?, liegeplatzId=?, frachtId=?, routeId=? where id=" + wasserfahrzeug.getId();
         PreparedStatement preparedStatement = getPreparedStatement(sqlString);
         preparedStatement = Wasserfahrzeug.fillPreparedStatementForChange(preparedStatement, wasserfahrzeug);
         databaseInteraction(preparedStatement);
@@ -172,7 +172,7 @@ public class DatabaseService {
     }
 
     public void listAllLiegeplaetze(){
-        String sqlString = "select * from Liegeplätze";//TODO Tim bennnung
+        String sqlString = "select * from Liegeplätze";
         ResultSet resultSet = databaseInteraction(getPreparedStatement(sqlString));
         Liegeplatz.fromResultSet(resultSet).forEach(kat -> {
             System.out.println(kat.toString());
@@ -200,7 +200,7 @@ public class DatabaseService {
     }
 
     public void listAllRouten(){
-        String sqlString = "select * from Route";//TODO Tim bennnung
+        String sqlString = "select * from Route";
         ResultSet resultSet = databaseInteraction(getPreparedStatement(sqlString));
         Route.fromResultSet(resultSet).forEach(kat -> {
             System.out.println(kat.toString());

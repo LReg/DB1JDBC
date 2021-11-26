@@ -17,7 +17,8 @@ public class Wasserfahrzeug {
                         resultSet.getString(2),
                         resultSet.getInt(3),
                         resultSet.getInt(4),
-                        resultSet.getInt(5)
+                        resultSet.getInt(5),
+                        resultSet.getInt(6)
                 ));
             }
         }
@@ -31,9 +32,10 @@ public class Wasserfahrzeug {
         try{
             preparedStatement.setInt(1, wasserfahrzeug.getId());
             preparedStatement.setString(2, wasserfahrzeug.getName());
-            preparedStatement.setInt(3, wasserfahrzeug.getLiegeplatzId());
-            preparedStatement.setInt(4, wasserfahrzeug.getFrachtId());
-            preparedStatement.setInt(5, wasserfahrzeug.getRouteId());
+            preparedStatement.setInt(3, wasserfahrzeug.getKategorieId());
+            preparedStatement.setInt(4, wasserfahrzeug.getLiegeplatzId());
+            preparedStatement.setInt(5, wasserfahrzeug.getFrachtId());
+            preparedStatement.setInt(6, wasserfahrzeug.getRouteId());
         }catch(SQLException e){
             e.printStackTrace();
         }
@@ -43,9 +45,10 @@ public class Wasserfahrzeug {
     public static PreparedStatement fillPreparedStatementForChange(PreparedStatement preparedStatement, Wasserfahrzeug wasserfahrzeug) {
         try{
             preparedStatement.setString(1, wasserfahrzeug.getName());
-            preparedStatement.setInt(2, wasserfahrzeug.getLiegeplatzId());
-            preparedStatement.setInt(3, wasserfahrzeug.getFrachtId());
-            preparedStatement.setInt(4, wasserfahrzeug.getRouteId());
+            preparedStatement.setInt(2, wasserfahrzeug.getKategorieId());
+            preparedStatement.setInt(3, wasserfahrzeug.getLiegeplatzId());
+            preparedStatement.setInt(4, wasserfahrzeug.getFrachtId());
+            preparedStatement.setInt(5, wasserfahrzeug.getRouteId());
         }catch(SQLException e){
             e.printStackTrace();
         }
@@ -54,16 +57,26 @@ public class Wasserfahrzeug {
 
     private int id;
     private String name;
+    private int kategorieId;
     private int liegeplatzId;
     private int frachtId;
     private int routeId;
 
-    public Wasserfahrzeug(int id, String name, int liegeplatzId, int frachtId, int routeId) {
+    public Wasserfahrzeug(int id, String name, int kategorieId, int liegeplatzId, int frachtId, int routeId) {
         this.id = id;
         this.name = name;
+        this.kategorieId = kategorieId;
         this.liegeplatzId = liegeplatzId;
         this.frachtId = frachtId;
         this.routeId = routeId;
+    }
+
+    public int getKategorieId() {
+        return kategorieId;
+    }
+
+    public void setKategorieId(int kategorieId) {
+        this.kategorieId = kategorieId;
     }
 
     public int getId() {
@@ -111,6 +124,7 @@ public class Wasserfahrzeug {
         return "Wasserfahrzeug{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", kategorieId=" + kategorieId +
                 ", liegeplatzId=" + liegeplatzId +
                 ", frachtId=" + frachtId +
                 ", routeId=" + routeId +
