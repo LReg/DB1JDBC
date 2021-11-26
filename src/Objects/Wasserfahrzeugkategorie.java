@@ -1,19 +1,22 @@
 package Objects;
 
-import oracle.jdbc.internal.OracleStatement;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class Wasserfahrzeugkathegorie {
+public class Wasserfahrzeugkategorie {
 
-    public static ArrayList<Wasserfahrzeugkathegorie> fromResultSet(ResultSet resultSet){
-        ArrayList<Wasserfahrzeugkathegorie> list = new ArrayList<>();
+    /**
+     * Funktion die aus einem passenden! ResultSet eine ArrayList bildet.
+     * @param resultSet
+     * @return ArrayList<Wasserfahzegkategorie>
+     */
+    public static ArrayList<Wasserfahrzeugkategorie> fromResultSet(ResultSet resultSet){
+        ArrayList<Wasserfahrzeugkategorie> list = new ArrayList<>();
         try{
             while(resultSet.next()) {
-                list.add(new Wasserfahrzeugkathegorie(
+                list.add(new Wasserfahrzeugkategorie(
                         resultSet.getInt(1),
                         resultSet.getInt(2),
                         resultSet.getString(3)
@@ -26,7 +29,13 @@ public class Wasserfahrzeugkathegorie {
         return list;
     }
 
-    public static PreparedStatement fillPreparedStatementForAdd(PreparedStatement preparedStatement, Wasserfahrzeugkathegorie wasserfahrzeugkathegorie){
+    /**
+     * Füllt ein übliches PreparedStatement zum hinzufügen einer Wasserfahrzeugkategorie mit den Attributen.
+     * @param preparedStatement
+     * @param wasserfahrzeugkathegorie
+     * @return
+     */
+    public static PreparedStatement fillPreparedStatementForAdd(PreparedStatement preparedStatement, Wasserfahrzeugkategorie wasserfahrzeugkathegorie){
         try{
             preparedStatement.setInt(1, wasserfahrzeugkathegorie.getId());
             preparedStatement.setInt(2, wasserfahrzeugkathegorie.getOberkathegorieId());
@@ -38,7 +47,13 @@ public class Wasserfahrzeugkathegorie {
         return preparedStatement;
     }
 
-    public static PreparedStatement fillPreparedStatementForChange(PreparedStatement preparedStatement, Wasserfahrzeugkathegorie wasserfahrzeugkathegorie){
+    /**
+     * Füllt ein übliches PreparedStatement zum bearbeiten einer Wasserfahrzeugkategorie mit den Attributen.
+     * @param preparedStatement
+     * @param wasserfahrzeugkathegorie
+     * @return
+     */
+    public static PreparedStatement fillPreparedStatementForChange(PreparedStatement preparedStatement, Wasserfahrzeugkategorie wasserfahrzeugkathegorie){
         try{
             preparedStatement.setInt(1, wasserfahrzeugkathegorie.getOberkathegorieId());
             preparedStatement.setString(2, wasserfahrzeugkathegorie.getTitle());
@@ -53,7 +68,7 @@ public class Wasserfahrzeugkathegorie {
     private int oberkathegorieId;
     private String title;
 
-    public Wasserfahrzeugkathegorie(int id, int oberkathegorieId, String title) {
+    public Wasserfahrzeugkategorie(int id, int oberkathegorieId, String title) {
         this.id = id;
         this.oberkathegorieId = oberkathegorieId;
         this.title = title;

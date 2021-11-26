@@ -8,6 +8,11 @@ import java.util.ArrayList;
 
 public class Fracht {
 
+    /**
+     * Funktion die aus einem passenden! ResultSet eine ArrayList bildet.
+     * @param resultSet
+     * @return ArrayList<Fracht>
+     */
     public static ArrayList<Fracht> fromResultSet(ResultSet resultSet){
         ArrayList<Fracht> list = new ArrayList<>();
         try{
@@ -26,6 +31,12 @@ public class Fracht {
         return list;
     }
 
+    /**
+     * Füllt ein übliches PreparedStatement zum hinzufügen einer Fracht mit den Attributen.
+     * @param preparedStatement
+     * @param fracht
+     * @return PreparedStatement
+     */
     public static PreparedStatement fillPreparedStatementForAdd(PreparedStatement preparedStatement, Fracht fracht){
         try{
             preparedStatement.setInt(1, fracht.getId());
@@ -38,6 +49,12 @@ public class Fracht {
         return preparedStatement;
     }
 
+    /**
+     * Füllt ein übliches PreparedStatement zum bearbeiten einer Fracht mit den Attributen.
+     * @param preparedStatement
+     * @param fracht
+     * @return
+     */
     public static PreparedStatement fillPreparedStatementForChange(PreparedStatement preparedStatement, Fracht fracht){
         try{
             preparedStatement.setString(1, fracht.getBezeichnug());

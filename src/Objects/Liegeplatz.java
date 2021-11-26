@@ -7,6 +7,12 @@ import java.util.ArrayList;
 
 public class Liegeplatz {
 
+    /**
+     * Füllt ein übliches PreparedStatement zum bearbeiten eines Liegeplatzes mit den Attributen.
+     * @param preparedStatement
+     * @param liegeplatz
+     * @return
+     */
     public static PreparedStatement fillPreparedStatementForChange(PreparedStatement preparedStatement, Liegeplatz liegeplatz) {
         try{
             preparedStatement.setInt(1, liegeplatz.getHafen());
@@ -17,6 +23,12 @@ public class Liegeplatz {
         return preparedStatement;
     }
 
+    /**
+     * Füllt ein übliches PreparedStatement zum hinzufügen eines Liegeplatzes mit den Attributen.
+     * @param preparedStatement
+     * @param liegeplatz
+     * @return
+     */
     public static PreparedStatement fillPreparedStatementForAdd(PreparedStatement preparedStatement, Liegeplatz liegeplatz) {
         try{
             preparedStatement.setInt(1, liegeplatz.getId());
@@ -28,6 +40,11 @@ public class Liegeplatz {
         return preparedStatement;
     }
 
+    /**
+     * Funktion die aus einem passenden! ResultSet eine ArrayList bildet.
+     * @param resultSet
+     * @return ArrayList<Liegeplatz>
+     */
     public static Iterable<Liegeplatz> fromResultSet(ResultSet resultSet) {
         ArrayList<Liegeplatz> list = new ArrayList<>();
         try{

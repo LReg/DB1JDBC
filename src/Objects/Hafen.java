@@ -7,6 +7,11 @@ import java.util.ArrayList;
 
 public class Hafen {
 
+    /**
+     * Funktion die aus einem passenden! ResultSet eine ArrayList bildet.
+     * @param resultSet
+     * @return ArrayList<Hafen>
+     */
     public static ArrayList<Hafen> fromResultSet(ResultSet resultSet){
         ArrayList<Hafen> list = new ArrayList<>();
         try {
@@ -26,6 +31,12 @@ public class Hafen {
         return list;
     }
 
+    /**
+     * Füllt ein übliches PreparedStatement zum hinzufügen eines Hafens mit den Attributen.
+     * @param preparedStatement
+     * @param hafen
+     * @return
+     */
     public static PreparedStatement fillPreparedStatementForAdd(PreparedStatement preparedStatement, Hafen hafen){
         try{
             preparedStatement.setInt(1, hafen.getId());
@@ -39,6 +50,13 @@ public class Hafen {
         return preparedStatement;
     }
 
+
+    /**
+     * Füllt ein übliches PreparedStatement zum bearbeiten eines Hafens mit den Attributen.
+     * @param preparedStatement
+     * @param hafen
+     * @return
+     */
     public static PreparedStatement fillPreparedStatementForChange(PreparedStatement preparedStatement, Hafen hafen){
         try{
             preparedStatement.setString(1, hafen.getName());

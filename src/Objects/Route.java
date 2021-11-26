@@ -7,6 +7,12 @@ import java.util.ArrayList;
 
 public class Route {
 
+    /**
+     * Füllt ein übliches PreparedStatement zum bearbeiten einer Route mit den Attributen.
+     * @param preparedStatement
+     * @param route
+     * @return
+     */
     public static PreparedStatement fillPreparedStatementForChange(PreparedStatement preparedStatement, Route route) {
         try{
             preparedStatement.setInt(1, route.getStartLiegeplatzId());
@@ -18,6 +24,12 @@ public class Route {
         return preparedStatement;
     }
 
+    /**
+     * Füllt ein übliches PreparedStatement zum hinzufügen einer Route mit den Attributen.
+     * @param preparedStatement
+     * @param route
+     * @return
+     */
     public static PreparedStatement fillPreparedStatementForAdd(PreparedStatement preparedStatement, Route route) {
         try{
             preparedStatement.setInt(1, route.getId());
@@ -30,6 +42,11 @@ public class Route {
         return preparedStatement;
     }
 
+    /**
+     * Funktion die aus einem passenden! ResultSet eine ArrayList bildet.
+     * @param resultSet
+     * @return ArrayList<Route>
+     */
     public static Iterable<Route> fromResultSet(ResultSet resultSet) {
         ArrayList<Route> list = new ArrayList<>();
         try{

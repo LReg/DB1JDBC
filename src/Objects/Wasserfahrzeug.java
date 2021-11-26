@@ -7,6 +7,11 @@ import java.util.ArrayList;
 
 public class Wasserfahrzeug {
 
+    /**
+     * Funktion die aus einem passenden! ResultSet eine ArrayList bildet.
+     * @param resultSet
+     * @return ArrayList<Wasserfahrzeug>
+     */
     public static ArrayList<Wasserfahrzeug> fromResultSet(ResultSet resultSet) {
 
         ArrayList<Wasserfahrzeug> list = new ArrayList<>();
@@ -28,6 +33,12 @@ public class Wasserfahrzeug {
         return list;
     }
 
+    /**
+     * Füllt ein übliches PreparedStatement zum hinzufügen eines Wasserfahrezeugs mit den Attributen.
+     * @param preparedStatement
+     * @param wasserfahrzeug
+     * @return
+     */
     public static PreparedStatement fillPreparedStatementForAdd(PreparedStatement preparedStatement, Wasserfahrzeug wasserfahrzeug) {
         try{
             preparedStatement.setInt(1, wasserfahrzeug.getId());
@@ -42,6 +53,12 @@ public class Wasserfahrzeug {
         return preparedStatement;
     }
 
+    /**
+     * Füllt ein übliches PreparedStatement zum bearbeiten eines Wasserfahrzeugs mit den Attributen.
+     * @param preparedStatement
+     * @param wasserfahrzeug
+     * @return
+     */
     public static PreparedStatement fillPreparedStatementForChange(PreparedStatement preparedStatement, Wasserfahrzeug wasserfahrzeug) {
         try{
             preparedStatement.setString(1, wasserfahrzeug.getName());
