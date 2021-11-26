@@ -8,14 +8,14 @@ public class DatabaseService {
 
     public DatabaseService(){
         connect();
-        printHowManyLowerKategrien(new Wasserfahrzeugkategorie(5, 2, "Motorboote"));
+        printHowManyLowerKategrien(new Wasserfahrzeugkategorie(2, 2, "Motorboote"));
     }
 
     /**
      * Diese Methode repräsentiert den Punkt an dem ein "preparedStatement" an die Datenbank gesendet wird und ein "resultSet" zurück gegeben wird.
      * @param preparedStatement mit ausgefüllten Lücken
      * @return resultSet was bei Datenbankanfragen die angeforderten Informationen enthält
-     * @see #getPreparedStatement(String sqlString)  hiermit kann ein String in ein PreparedStatement umgewandelt werden
+     * @see #getPreparedStatement(String sqlString)
      */
     private ResultSet databaseInteraction(PreparedStatement preparedStatement){
         try {
@@ -163,7 +163,7 @@ public class DatabaseService {
      * @param wasserfahrzeugkathegorie
      */
     public void changeKategorie(Wasserfahrzeugkategorie wasserfahrzeugkathegorie){
-        String sqlString = "update wasserfahrzeugkathegorie set oberkathegorieId=?, title=? where id=" + wasserfahrzeugkathegorie.getId();
+        String sqlString = "update wasserfahrzeugkategorie set oberkategorie=?, titel=? where kategorie_id=" + wasserfahrzeugkathegorie.getId();
         PreparedStatement preparedStatement = getPreparedStatement(sqlString);
         preparedStatement = Wasserfahrzeugkategorie.fillPreparedStatementForChange(preparedStatement, wasserfahrzeugkathegorie);
         databaseInteraction(preparedStatement);
@@ -171,11 +171,13 @@ public class DatabaseService {
 
     /**
      * Funktion um eine Wasserfahrzeugkategorie zu löschen
-     * @param wasserfahrzeugkathegorie
+     * @param wasserfahrzeugkategorie
      */
-    public void deleteKategorie(Wasserfahrzeugkategorie wasserfahrzeugkathegorie){
-        String sqlString = "delete from wasserfahrzeugkategorie where id=" + wasserfahrzeugkathegorie.getId();
+    public void deleteKategorie(Wasserfahrzeugkategorie wasserfahrzeugkategorie){
+        String sqlString = "delete from wasserfahrzeugkategorie where kategorie_id=" + wasserfahrzeugkategorie.getId();
+        System.out.println(5);
         databaseInteraction(getPreparedStatement(sqlString));
+        System.out.println(5);
     }
 
     /**
@@ -183,12 +185,14 @@ public class DatabaseService {
      * @param wasserfahrzeugkathegorie
      */
     public void printHowManyLowerKategrien(Wasserfahrzeugkategorie wasserfahrzeugkathegorie){
-        String sqlString = "select id, count(*) as anzahl groupBy id having oberkategorieId=" + wasserfahrzeugkathegorie.getId();
+        String sqlString = "SELECT oberkategorie, COUNT(*)FROM wasserfahrzeugkategorie WHERE oberkategorie=" + wasserfahrzeugkathegorie.getId() + " GROUP BY oberkategorie";
         PreparedStatement preparedStatement = getPreparedStatement(sqlString);
         ResultSet resultSet = databaseInteraction(preparedStatement);
         try{
-            int anzahl = resultSet.getInt(2);
-            System.out.println(anzahl);
+            if(resultSet.next()) {
+                int anzahl = resultSet.getInt(2);
+                System.out.println(anzahl);
+            }
         }
         catch(SQLException e){
             e.printStackTrace();
