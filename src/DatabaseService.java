@@ -126,4 +126,17 @@ public class DatabaseService {
         databaseInteraction(getPreparedStatement(sqlString));
     }
 
+    public void printHowManyLowerKategrien(Wasserfahrzeugkathegorie wasserfahrzeugkathegorie){
+        String sqlString = "select id, count(*) as anzahl groupBy id having id=" + wasserfahrzeugkathegorie.getId();
+        PreparedStatement preparedStatement = getPreparedStatement(sqlString);
+        ResultSet resultSet = databaseInteraction(preparedStatement);
+        try{
+            int anzahl = resultSet.getInt(2);
+            System.out.println(anzahl);
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+
 }
