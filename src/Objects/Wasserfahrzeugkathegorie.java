@@ -12,11 +12,13 @@ public class Wasserfahrzeugkathegorie {
     public static ArrayList<Wasserfahrzeugkathegorie> fromResultSet(ResultSet resultSet){
         ArrayList<Wasserfahrzeugkathegorie> list = new ArrayList<>();
         try{
-            list.add(new Wasserfahrzeugkathegorie(
-              resultSet.getInt(1),
-              resultSet.getInt(2),
-              resultSet.getString(3)
-            ));
+            while(resultSet.next()) {
+                list.add(new Wasserfahrzeugkathegorie(
+                        resultSet.getInt(1),
+                        resultSet.getInt(2),
+                        resultSet.getString(3)
+                ));
+            }
         }
         catch (SQLException e){
             e.printStackTrace();

@@ -1,5 +1,6 @@
 import Objects.Fracht;
 import Objects.Hafen;
+import Objects.Wasserfahrzeug;
 import Objects.Wasserfahrzeugkathegorie;
 
 import java.sql.*;
@@ -138,5 +139,34 @@ public class DatabaseService {
             e.printStackTrace();
         }
     }
+
+    public void listAllWasserfahrzeuge(){
+        String sqlString = "select...";//TODO Tim bennnung
+        ResultSet resultSet = databaseInteraction(getPreparedStatement(sqlString));
+        Wasserfahrzeug.fromResultSet(resultSet).forEach(kat -> {
+            System.out.println(kat.toString());
+        });
+
+    }
+
+    public void addWasserfahrzeug(Wasserfahrzeug wasserfahrzeug){
+        String sqlString = "insert into wasserfahrzeug values (?, ?, ?, ?, ?)";
+        PreparedStatement preparedStatement = getPreparedStatement(sqlString);
+        preparedStatement = Wasserfahrzeug.fillPreparedStatementForAdd(preparedStatement, wasserfahrzeug);
+        databaseInteraction(preparedStatement);
+    }
+
+    public void changeWasserfahrzeug(Wasserfahrzeug wasserfahrzeug){
+        String sqlString = "update wasserfahrzeug set name=?, liegeplatzId=?, frachtId=?, routeId=? where id=" + wasserfahrzeug.getId();
+        PreparedStatement preparedStatement = getPreparedStatement(sqlString);
+        preparedStatement = Wasserfahrzeug.fillPreparedStatementForChange(preparedStatement, wasserfahrzeug);
+        databaseInteraction(preparedStatement);
+    }
+
+    public void deleteWasserfahrzeug(Wasserfahrzeug wasserfahrzeug){
+        String sqlString = "delete from wasserfahrzeug where id=" + wasserfahrzeug.getId();
+        databaseInteraction(getPreparedStatement(sqlString));
+    }
+
 
 }

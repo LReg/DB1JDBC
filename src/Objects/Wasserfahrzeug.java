@@ -1,6 +1,56 @@
 package Objects;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 public class Wasserfahrzeug {
+
+    public static ArrayList<Wasserfahrzeug> fromResultSet(ResultSet resultSet) {
+
+        ArrayList<Wasserfahrzeug> list = new ArrayList<>();
+        try{
+            while(resultSet.next()){
+                list.add(new Wasserfahrzeug(
+                        resultSet.getInt(1),
+                        resultSet.getString(2),
+                        resultSet.getInt(3),
+                        resultSet.getInt(4),
+                        resultSet.getInt(5)
+                ));
+            }
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public static PreparedStatement fillPreparedStatementForAdd(PreparedStatement preparedStatement, Wasserfahrzeug wasserfahrzeug) {
+        try{
+            preparedStatement.setInt(1, wasserfahrzeug.getId());
+            preparedStatement.setString(2, wasserfahrzeug.getName());
+            preparedStatement.setInt(3, wasserfahrzeug.getLiegeplatzId());
+            preparedStatement.setInt(4, wasserfahrzeug.getFrachtId());
+            preparedStatement.setInt(5, wasserfahrzeug.getRouteId());
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return preparedStatement;
+    }
+
+    public static PreparedStatement fillPreparedStatementForChange(PreparedStatement preparedStatement, Wasserfahrzeug wasserfahrzeug) {
+        try{
+            preparedStatement.setString(1, wasserfahrzeug.getName());
+            preparedStatement.setInt(2, wasserfahrzeug.getLiegeplatzId());
+            preparedStatement.setInt(3, wasserfahrzeug.getFrachtId());
+            preparedStatement.setInt(4, wasserfahrzeug.getRouteId());
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return preparedStatement;
+    }
 
     private int id;
     private String name;
