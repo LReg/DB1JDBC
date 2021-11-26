@@ -1,5 +1,6 @@
 import Objects.Fracht;
 import Objects.Hafen;
+import Objects.Wasserfahrzeugkathegorie;
 
 import java.sql.*;
 
@@ -89,6 +90,40 @@ public class DatabaseService {
         PreparedStatement preparedStatement = getPreparedStatement(sqlString);
         preparedStatement = Fracht.fillPreparedStatementForChange(preparedStatement, fracht);
         databaseInteraction(preparedStatement);
+    }
+
+    public void deleteFracht(Fracht fracht){
+        String sqlString = "delte from fracht where id=" + fracht.getId();
+        PreparedStatement preparedStatement = getPreparedStatement(sqlString);
+        databaseInteraction(preparedStatement);
+    }
+
+    public void listAllKategorien(){
+        String sqlString = "select...";//TODO Tim bennnung
+        ResultSet resultSet = databaseInteraction(getPreparedStatement(sqlString));
+        Wasserfahrzeugkathegorie.fromResultSet(resultSet).forEach(kat -> {
+            System.out.println(kat.toString());
+        });
+
+    }
+
+    public void addKategorie(Wasserfahrzeugkathegorie wasserfahrzeugkathegorie){
+        String sqlString = "insert into wasserfahrzeugkathegorie values (?, ?, ?)";
+        PreparedStatement preparedStatement = getPreparedStatement(sqlString);
+        preparedStatement = Wasserfahrzeugkathegorie.fillPreparedStatementForAdd(preparedStatement, wasserfahrzeugkathegorie);
+        databaseInteraction(preparedStatement);
+    }
+
+    public void changeKategorie(Wasserfahrzeugkathegorie wasserfahrzeugkathegorie){
+        String sqlString = "update wasserfahrzeugkathegorie set oberkathegorieId=?, title=? where id=" + wasserfahrzeugkathegorie.getId();
+        PreparedStatement preparedStatement = getPreparedStatement(sqlString);
+        preparedStatement = Wasserfahrzeugkathegorie.fillPreparedStatementForChange(preparedStatement, wasserfahrzeugkathegorie);
+        databaseInteraction(preparedStatement);
+    }
+
+    public void deleteKategorie(Wasserfahrzeugkathegorie wasserfahrzeugkathegorie){
+        String sqlString = "delete from wasserfahrzeugkategorie where id=" + wasserfahrzeugkathegorie.getId();
+        databaseInteraction(getPreparedStatement(sqlString));
     }
 
 }
