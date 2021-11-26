@@ -193,5 +193,33 @@ public class DatabaseService {
         databaseInteraction(getPreparedStatement(sqlString));
     }
 
+    public void listAllRouten(){
+        String sqlString = "select...";//TODO Tim bennnung
+        ResultSet resultSet = databaseInteraction(getPreparedStatement(sqlString));
+        Route.fromResultSet(resultSet).forEach(kat -> {
+            System.out.println(kat.toString());
+        });
+
+    }
+
+    public void addRoute(Route route){
+        String sqlString = "insert into route values (?, ?, ?, ?)";
+        PreparedStatement preparedStatement = getPreparedStatement(sqlString);
+        preparedStatement = Route.fillPreparedStatementForAdd(preparedStatement, route);
+        databaseInteraction(preparedStatement);
+    }
+
+    public void changeRoute(Route route){
+        String sqlString = "update route set startLiegeplatzId=?, zielLiegeplatzId=?, laenge=? where id=" + route.getId();
+        PreparedStatement preparedStatement = getPreparedStatement(sqlString);
+        preparedStatement = Route.fillPreparedStatementForChange(preparedStatement, route);
+        databaseInteraction(preparedStatement);
+    }
+
+    public void deleteRoute(Route route){
+        String sqlString = "delete from route where id=" + route.getId();
+        databaseInteraction(getPreparedStatement(sqlString));
+    }
+
 
 }

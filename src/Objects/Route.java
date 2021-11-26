@@ -1,6 +1,52 @@
 package Objects;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 public class Route {
+
+    public static PreparedStatement fillPreparedStatementForChange(PreparedStatement preparedStatement, Route route) {
+        try{
+            preparedStatement.setInt(1, route.getStartLiegeplatzId());
+            preparedStatement.setInt(2, route.getZielLiegeplatzId());
+            preparedStatement.setInt(3, route.getLaeenge());
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return preparedStatement;
+    }
+
+    public static PreparedStatement fillPreparedStatementForAdd(PreparedStatement preparedStatement, Route route) {
+        try{
+            preparedStatement.setInt(1, route.getId());
+            preparedStatement.setInt(2, route.getStartLiegeplatzId());
+            preparedStatement.setInt(3, route.getZielLiegeplatzId());
+            preparedStatement.setInt(4, route.getLaeenge());
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return preparedStatement;
+    }
+
+    public static Iterable<Route> fromResultSet(ResultSet resultSet) {
+        ArrayList<Route> list = new ArrayList<>();
+        try{
+            while(resultSet.next()){
+                list.add(new Route(
+                    resultSet.getInt(1),
+                    resultSet.getInt(2),
+                    resultSet.getInt(3),
+                    resultSet.getInt(4)
+                ));
+            }
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+        return list;
+    }
 
     private int id;
     private int startLiegeplatzId;
