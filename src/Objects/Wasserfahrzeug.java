@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class Wasserfahrzeug {
 
     /**
+     * @author Nils & Tim
      * Funktion die aus einem passenden! ResultSet eine ArrayList bildet.
      * @param resultSet
      * @return ArrayList<Wasserfahrzeug>
@@ -34,6 +35,7 @@ public class Wasserfahrzeug {
     }
 
     /**
+     * @author Nils & Tim
      * Füllt ein übliches PreparedStatement zum hinzufügen eines Wasserfahrezeugs mit den Attributen.
      * @param preparedStatement
      * @param wasserfahrzeug
@@ -54,6 +56,7 @@ public class Wasserfahrzeug {
     }
 
     /**
+     * @author Nils & Tim
      * Füllt ein übliches PreparedStatement zum bearbeiten eines Wasserfahrzeugs mit den Attributen.
      * @param preparedStatement
      * @param wasserfahrzeug

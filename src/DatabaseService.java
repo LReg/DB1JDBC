@@ -12,6 +12,7 @@ public class DatabaseService {
     }
 
     /**
+     * @author Nils & Tim
      * Diese Methode repräsentiert den Punkt an dem ein "preparedStatement" an die Datenbank gesendet wird und ein "resultSet" zurück gegeben wird.
      * @param preparedStatement mit ausgefüllten Lücken
      * @return resultSet was bei Datenbankanfragen die angeforderten Informationen enthält
@@ -28,6 +29,7 @@ public class DatabaseService {
     }
 
     /**
+     * @author Nils & Tim
      * Methode um sich mit der !Oracle Datenbank zu verbinden
      * @see PrivateInformation hier werden die Anmeldeinformationen bezogen
      */
@@ -42,6 +44,7 @@ public class DatabaseService {
     }
 
     /**
+     * @author Nils & Tim
      * Mit dieser Methode kann man einen String in ein Prepared statement umwandeln. Es füllt jedoch noch keine "?" Lücken.
      * @param sqlStatement String mit OracleSql Synthax
      * @return PreparedStatement ohne gefüllten Lücken
@@ -59,6 +62,7 @@ public class DatabaseService {
     }
 
     /**
+     * @author Nils & Tim
      * Funktion die alle nötigen Aktionen beinhaltet um alle in der Datenbank gespeicherten Objekte vom Typ Hafen in die Konsole zu schreiben.
      */
     public void listAllHafen(){
@@ -70,6 +74,7 @@ public class DatabaseService {
     }
 
     /**
+     * @author Nils & Tim
      * Funktion um der Datenbank einen neuen Hafen hinzuzufügen
      * @param hafen
      */
@@ -93,6 +98,7 @@ public class DatabaseService {
     }
 
     /**
+     * @author Nils & Tim
      * Funktion die alle nötigen Aktionen beinhaltet um alle in der Datenbank gespeicherten Objekte vom Typ Fracht in die Konsole zu schreiben.
      */
     public void listAllFracht(){
@@ -104,6 +110,7 @@ public class DatabaseService {
     }
 
     /**
+     * @author Nils & Tim
      * Funktion um der Datenbank eine neue Fracht hinzuzufügen
      * @param fracht
      */
@@ -115,6 +122,7 @@ public class DatabaseService {
     }
 
     /**
+     * @author Nils & Tim
      * Funktion, um eine Fracht zu ändern.
      * @param fracht
      */
@@ -126,6 +134,7 @@ public class DatabaseService {
     }
 
     /**
+     * @author Nils & Tim
      * Funktion um eine Fracht zu löschen
      * @param fracht
      */
@@ -136,6 +145,7 @@ public class DatabaseService {
     }
 
     /**
+     * @author Nils & Tim
      * Funktion die alle nötigen Aktionen beinhaltet um alle in der Datenbank gespeicherten Objekte vom Typ Wasserfahrzeugkategorien in die Konsole zu schreiben.
      */
     public void listAllKategorien(){
@@ -148,6 +158,7 @@ public class DatabaseService {
     }
 
     /**
+     * @author Nils & Tim
      * Funktion um der Datenbank einen neue Kategorie hinzuzufügen
      * @param wasserfahrzeugkathegorie
      */
@@ -159,6 +170,7 @@ public class DatabaseService {
     }
 
     /**
+     * @author Nils & Tim
      * Funktion, um eine Wasserfahrzeugkategorie zu ändern.
      * @param wasserfahrzeugkathegorie
      */
@@ -170,6 +182,7 @@ public class DatabaseService {
     }
 
     /**
+     * @author Nils & Tim
      * Funktion um eine Wasserfahrzeugkategorie zu löschen
      * @param wasserfahrzeugkategorie
      */
@@ -181,6 +194,7 @@ public class DatabaseService {
     }
 
     /**
+     * @author Nils & Tim
      * Funktion um die Anzahl der Kategorien auszugeben, die Unterkategorien von der übergebenen Kategorie sind.
      * @param wasserfahrzeugkathegorie
      */
@@ -200,6 +214,7 @@ public class DatabaseService {
     }
 
     /**
+     * @author Nils & Tim
      * Funktion die alle nötigen Aktionen beinhaltet um alle in der Datenbank gespeicherten Objekte vom Typ Wasserfahrzeug in die Konsole zu schreiben.
      */
     public void listAllWasserfahrzeuge(){
@@ -211,6 +226,7 @@ public class DatabaseService {
     }
 
     /**
+     * @author Nils & Tim
      * Funktion um der Datenbank ein neues Wasserfahrzeug hinzuzufügen
      * @param wasserfahrzeug
      */
@@ -222,6 +238,7 @@ public class DatabaseService {
     }
 
     /**
+     * @author Nils & Tim
      * Funktion, um einen Wasserfahrzeug zu ändern.
      * @param wasserfahrzeug
      */
@@ -233,6 +250,7 @@ public class DatabaseService {
     }
 
     /**
+     * @author Nils & Tim
      * Funktion um ein Wasserfahrzeug zu enternen
      * @param wasserfahrzeug
      */
@@ -242,6 +260,7 @@ public class DatabaseService {
     }
 
     /**
+     * @author Nils & Tim
      * Funktion die alle nötigen Aktionen beinhaltet um alle in der Datenbank gespeicherten Objekte vom Typ Liegeplätze in die Konsole zu schreiben.
      */
     public void listAllLiegeplaetze(){
@@ -254,6 +273,7 @@ public class DatabaseService {
     }
 
     /**
+     * @author Nils & Tim
      * Funktion um der Datenbank einen neuen Liegeplatz hinzuzufügen
      * @param liegeplatz
      */
@@ -265,6 +285,7 @@ public class DatabaseService {
     }
 
     /**
+     * @author Nils & Tim
      * Funktion, um einen Liegeplatz zu ändern.
      * @param liegeplatz
      */
@@ -276,6 +297,7 @@ public class DatabaseService {
     }
 
     /**
+     * @author Nils & Tim
      * Funktion um einen Liegeplatz zu löschen.
      * @param liegeplatz
      */
@@ -285,6 +307,7 @@ public class DatabaseService {
     }
 
     /**
+     * @author Nils & Tim
      * Funktion die alle nötigen Aktionen beinhaltet um alle in der Datenbank gespeicherten Objekte vom Typ Routen in die Konsole zu schreiben.
      */
     public void listAllRouten(){
@@ -297,6 +320,7 @@ public class DatabaseService {
     }
 
     /**
+     * @author Nils & Tim
      * Funktion um der Datenbank eine neue Route hinzuzufügen
      * @param route
      */
@@ -308,6 +332,7 @@ public class DatabaseService {
     }
 
     /**
+     * @author Nils & Tim
      * Funktion, um eine Route zu ändern.
      * @param route
      */
@@ -319,6 +344,7 @@ public class DatabaseService {
     }
 
     /**
+     * @author Nils & Tim
      * Funktion um eine Route zu löschen.
      * @param route
      */

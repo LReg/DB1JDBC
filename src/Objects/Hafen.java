@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class Hafen {
 
     /**
+     * @author Nils & Tim
      * Funktion die aus einem passenden! ResultSet eine ArrayList bildet.
      * @param resultSet
      * @return ArrayList<Hafen>
@@ -32,6 +33,7 @@ public class Hafen {
     }
 
     /**
+     * @author Nils & Tim
      * Füllt ein übliches PreparedStatement zum hinzufügen eines Hafens mit den Attributen.
      * @param preparedStatement
      * @param hafen
@@ -52,6 +54,7 @@ public class Hafen {
 
 
     /**
+     * @author Nils & Tim
      * Füllt ein übliches PreparedStatement zum bearbeiten eines Hafens mit den Attributen.
      * @param preparedStatement
      * @param hafen

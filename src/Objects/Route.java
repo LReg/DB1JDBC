@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class Route {
 
     /**
+     * @author Nils & Tim
      * Füllt ein übliches PreparedStatement zum bearbeiten einer Route mit den Attributen.
      * @param preparedStatement
      * @param route
@@ -25,6 +26,7 @@ public class Route {
     }
 
     /**
+     * @author Nils & Tim
      * Füllt ein übliches PreparedStatement zum hinzufügen einer Route mit den Attributen.
      * @param preparedStatement
      * @param route
@@ -43,6 +45,7 @@ public class Route {
     }
 
     /**
+     * @author Nils & Tim
      * Funktion die aus einem passenden! ResultSet eine ArrayList bildet.
      * @param resultSet
      * @return ArrayList<Route>

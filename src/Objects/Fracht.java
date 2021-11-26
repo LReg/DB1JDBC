@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class Fracht {
 
     /**
+     * @author Nils & Tim
      * Funktion die aus einem passenden! ResultSet eine ArrayList bildet.
      * @param resultSet
      * @return ArrayList<Fracht>
@@ -32,6 +33,7 @@ public class Fracht {
     }
 
     /**
+     * @author Nils & Tim
      * Füllt ein übliches PreparedStatement zum hinzufügen einer Fracht mit den Attributen.
      * @param preparedStatement
      * @param fracht
@@ -50,6 +52,7 @@ public class Fracht {
     }
 
     /**
+     * @author Nils & Tim
      * Füllt ein übliches PreparedStatement zum bearbeiten einer Fracht mit den Attributen.
      * @param preparedStatement
      * @param fracht

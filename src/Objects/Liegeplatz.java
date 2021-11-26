@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class Liegeplatz {
 
     /**
+     * @author Nils & Tim
      * Füllt ein übliches PreparedStatement zum bearbeiten eines Liegeplatzes mit den Attributen.
      * @param preparedStatement
      * @param liegeplatz
@@ -24,6 +25,7 @@ public class Liegeplatz {
     }
 
     /**
+     * @author Nils & Tim
      * Füllt ein übliches PreparedStatement zum hinzufügen eines Liegeplatzes mit den Attributen.
      * @param preparedStatement
      * @param liegeplatz
@@ -41,6 +43,7 @@ public class Liegeplatz {
     }
 
     /**
+     * @author Nils & Tim
      * Funktion die aus einem passenden! ResultSet eine ArrayList bildet.
      * @param resultSet
      * @return ArrayList<Liegeplatz>
